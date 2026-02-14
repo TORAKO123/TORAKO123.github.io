@@ -384,18 +384,73 @@
     }
 
     /* Gallery */
-    .gallery-note {
-      text-align: center;
-      color: var(--text-light);
-      font-size: 0.95rem;
-      line-height: 2;
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 1.5rem;
+      justify-items: center;
+    }
+
+    .gallery-item {
       background: var(--white);
       border-radius: 20px;
-      padding: 3rem 2rem;
+      overflow: hidden;
       box-shadow: 0 4px 20px rgba(0,0,0,0.04);
-      border: 2px dashed var(--pink-light);
+      border: 1px solid rgba(248, 164, 200, 0.1);
+      transition: transform 0.3s, box-shadow 0.3s;
+      width: 100%;
+      max-width: 480px;
     }
-    .gallery-note .emoji { font-size: 3rem; margin-bottom: 1rem; display: block; }
+    .gallery-item:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 8px 30px var(--shadow);
+    }
+
+    .gallery-item .embed-wrapper {
+      padding: 1rem;
+    }
+
+    .gallery-item .item-label {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.8rem 1.2rem;
+      font-size: 0.8rem;
+      color: var(--text-light);
+      border-top: 1px solid rgba(248, 164, 200, 0.1);
+    }
+
+    .gallery-item .item-tag {
+      background: var(--lavender);
+      color: var(--text);
+      font-size: 0.75rem;
+      font-weight: 600;
+      padding: 0.2rem 0.6rem;
+      border-radius: 50px;
+    }
+
+    .gallery-more {
+      text-align: center;
+      margin-top: 2rem;
+    }
+
+    .gallery-more a {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      color: var(--pink-dark);
+      font-weight: 600;
+      font-size: 0.95rem;
+      text-decoration: none;
+      padding: 0.7rem 1.5rem;
+      border: 2px solid var(--pink);
+      border-radius: 50px;
+      transition: all 0.3s;
+    }
+    .gallery-more a:hover {
+      background: var(--pink);
+      color: var(--white);
+    }
 
     /* Contact / Footer */
     .contact-section {
@@ -555,13 +610,23 @@
   <section id="gallery">
     <h2 class="section-title fade-in">Gallery</h2>
     <p class="section-subtitle fade-in">作品ギャラリー</p>
-    <div class="gallery-note fade-in">
-      <span class="emoji">🎨</span>
-      作品は準備中です！<br>
-      最新の作品は
-      <a href="https://x.com/toratorako123" target="_blank" rel="noopener" style="color: var(--pink-dark); font-weight: 600;">X (@toratorako123)</a>
-      で公開中。<br>
-      ぜひチェックしてみてください。
+    <div class="gallery-grid fade-in">
+      <div class="gallery-item">
+        <div class="embed-wrapper">
+          <blockquote class="twitter-tweet" data-dnt="true" data-theme="light">
+            <a href="https://x.com/toratorako123/status/2001331392194785627"></a>
+          </blockquote>
+        </div>
+        <div class="item-label">
+          <span class="item-tag">Animation</span>
+          動画・アニメーション作品
+        </div>
+      </div>
+    </div>
+    <div class="gallery-more fade-in">
+      <a href="https://x.com/toratorako123" target="_blank" rel="noopener">
+        もっと見る &rarr;
+      </a>
     </div>
   </section>
 
@@ -587,6 +652,7 @@
     <p>&copy; 2025 TORAKO. All rights reserved.</p>
   </footer>
 
+  <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
   <script>
     // Mobile menu toggle
     document.getElementById('hamburger').addEventListener('click', function() {
